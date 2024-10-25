@@ -7,10 +7,9 @@
     import { Edit } from 'lucide-svelte'
 	import { toast } from 'svelte-sonner';
 
-    export let position: EditPosition;
+    export let editPosition: EditPosition;
 
-    let edited: EditPosition = position; 
-
+   
 	//for the dialog
 	let open = false;
 
@@ -20,7 +19,7 @@
         try {
 			const response = await fetch(`http://localhost:3000/api/positions/${position.id}`,{
             method:'PUT',
-            body: JSON.stringify(edited),
+            body: JSON.stringify(position),
 			headers: {
                     'Content-Type': 'application/json' 
                 }
@@ -31,7 +30,6 @@
 		} catch (error) {
 			toast('⚠️ failed to edit!')
 		}
-		console.log(position)
 		open = false
 		if(onAction){
 				onAction()
@@ -52,15 +50,15 @@
 		<div class="grid gap-4 py-4">
 			<div class="grid grid-cols-4 items-center gap-4">
 				<Label for="name" class="text-right">Name</Label>
-				<Input id="name" bind:value={edited.name} class="col-span-3" />
+				<Input id="name" bind:value={editPosition.name} class="col-span-3" />
 			</div>
 			<div class="grid grid-cols-4 items-center gap-4">
 				<Label for="description" class="text-right">Description</Label>
-				<Input id="description" bind:value={edited.description} class="col-span-3" />
+				<Input id="description" bind:value={editPosition.description} class="col-span-3" />
 			</div>
 		</div>
 		<Dialog.Footer>
-			<Button type="submit" on:click={()=>handleUpdatePosition(edited)}>Save changes</Button>
+			<Button type="submit" on:click={()=>handleUpdatePosition(editPosition)}>Save changes</Button>
 		</Dialog.Footer>
 	</Dialog.Content>
 </Dialog.Root>

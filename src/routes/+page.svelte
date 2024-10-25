@@ -12,7 +12,7 @@
 
 	export let data;
 	let positionData: Positions = data.data; // Variable to hold the fetched position data
-	console.log("before",positionData)
+	
 	async function handleGetPosition(event: Event, positionId: number) {
 		event.preventDefault();
 		if (typeof positionId !== 'number') {
@@ -26,7 +26,6 @@
 				throw new Error('Failed to fetch position data');
 			}
 			positionData = await response.json();
-			console.log("after",positionData)
 		} catch (error) {
 			console.error('Error fetching position data:', error);
 		}
@@ -93,7 +92,7 @@
 								<Table.Cell class="text-right">
 									<div>
 										<Edit
-										position={{
+										editPosition={{
 											id: position.id,
 											name: position.name,
 											description: position.description,
