@@ -43,7 +43,7 @@
 		<Dialog.Header>
 			<Dialog.Title>Delete Position</Dialog.Title>
 			<Dialog.Description>
-				Are you sure you want to delte {PositionToDelete.name}
+				Are you sure you want to delete {PositionToDelete.name}
 			</Dialog.Description>
 		</Dialog.Header>
 			
@@ -53,7 +53,7 @@
                 <Label
     for="terms"
     class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-  >Tick the box if you want to delete {PositionToDelete.name} with its child Positions. </Label>
+  >Tick the box if you want to delete "{PositionToDelete.name}" with its child Positions. </Label>
 			</div>
 		
 		<Dialog.Footer>
